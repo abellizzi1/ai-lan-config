@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+*.dump
+.kubeconfig
+secrets*.yaml
+secrets*.yml
