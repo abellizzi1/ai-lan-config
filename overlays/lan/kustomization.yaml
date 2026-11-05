@@ -5,4 +5,4 @@ resources:
 images:
   # Update this tag after manually building and pushing a new gateway image.
   - name: angelobellizzi/ai-gateway
-    newTag: 0.0.1
+    newTag: 1.0.2

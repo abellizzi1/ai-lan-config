@@ -5,16 +5,9 @@ resources:
   - namespace.yaml
   - postgres.yaml
   - gateway.yaml
-  - frontend.yaml
   - network.yaml
 configMapGenerator:
   - name: gateway-config
     literals:
       - provider-api-base=https://api.openai.com/v1
       - default-model=gpt-4o-mini
-  - name: frontend-page
-    files:
-      - frontend/index.html
-      - frontend/app.js
-      - frontend/admin.html
-      - frontend/admin.js

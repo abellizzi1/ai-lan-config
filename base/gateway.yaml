@@ -23,7 +23,8 @@ spec:
           command: ["bash", "-c", "until pg_isready -h postgres -U ai_gateway; do sleep 2; done"]
       containers:
         - name: gateway
-          image: angelobellizzi/ai-gateway:0.0.1
+          # The image version is set in overlays/lan/kustomization.yaml.
+          image: angelobellizzi/ai-gateway
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
