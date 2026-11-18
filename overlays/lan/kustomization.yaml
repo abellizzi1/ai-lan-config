@@ -4,4 +4,4 @@ resources:
   - ../../base
 images:
   - name: angelobellizzi/ai-gateway
-    newTag: 1.0.3
+    newTag: 1.0.4
