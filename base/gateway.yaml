@@ -29,6 +29,8 @@ spec:
           ports:
             - containerPort: 8000
           env:
+            - name: ROOT_PATH
+              value: /ai
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef: {name: gateway-secrets, key: postgres-password}
