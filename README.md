@@ -20,13 +20,9 @@ The UI is exposed at `http://localhost:8080/ai/` on the Docker host, or `http://
 2. Set `newTag` value to the new image's tag in `overlays/lan/kustomization.yaml`.
 3. Commit and push to the branch tracked by ArgoCD.
 
-The subpath release uses `angelobellizzi/ai-gateway:1.0.3`; publish that image before syncing these manifests. Both overlays inherit this version.
-
 ## Path routing
 
-The `ai-lan` Ingress matches `/ai` and its child paths. Traefik first redirects the bare `/ai` URL to `/ai/`, preserving any query string, then strips `/ai` before forwarding requests to `gateway:8000`. The gateway is configured with `ROOT_PATH=/ai`; browser assets, chat events, API requests, and admin navigation stay under that prefix. Its internal readiness probe remains `/healthz`.
-
-The Traefik Middleware CRD and ingress controller are supplied by K3s. The `ai-lan` AppProject in `cluster-config` must allow `traefik.io/Middleware`; update that project before syncing the new application manifests.
+The `ai-lan` Ingress matches `/ai` and its child paths. Traefik first redirects the bare `/ai` URL to `/ai/`, preserving any query string, then strips `/ai` before forwarding requests to `gateway:8000`. The gateway is configured with `ROOT_PATH=/ai`; browser assets, chat events, API requests, and admin navigation stay under that prefix.
 
 ## Change configuration
 
