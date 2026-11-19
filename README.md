@@ -4,6 +4,8 @@ Kubernetes configuration for [ai-lan](https://github.com/abellizzi1/ai-lan): web
 
 For cluster setup, start with [cluster-config](https://github.com/abellizzi1/cluster-config).
 
+The UI is exposed at `http://localhost:8080/ai/` on the Docker host, or `http://<HOST_LAN_IP>:8080/ai/` from the LAN. Argo CD shares this port at `/argocd/`. Replace `8080` if you configured another shared HTTP port.
+
 ## Layout
 
 | Path | Purpose |
@@ -17,6 +19,10 @@ For cluster setup, start with [cluster-config](https://github.com/abellizzi1/clu
 1. Build and push new image from [ai-lan](https://github.com/abellizzi1/ai-lan).
 2. Set `newTag` value to the new image's tag in `overlays/lan/kustomization.yaml`.
 3. Commit and push to the branch tracked by ArgoCD.
+
+## Path routing
+
+The `ai-lan` Ingress matches `/ai` and its child paths. Traefik first redirects the bare `/ai` URL to `/ai/`, preserving any query string, then strips `/ai` before forwarding requests to `gateway:8000`. The gateway is configured with `ROOT_PATH=/ai`; browser assets, chat events, API requests, and admin navigation stay under that prefix.
 
 ## Change configuration
 

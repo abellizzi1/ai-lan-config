@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - ../../base
 images:
-  # Update this tag after manually building and pushing a new gateway image.
   - name: angelobellizzi/ai-gateway
-    newTag: 1.0.2
+    newTag: 1.0.4
